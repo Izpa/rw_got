@@ -116,7 +116,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ROLLBAR = {
-    'access_token': 'deb11866ae2e417997c09e0be075ca30',
+    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
     'environment': 'development' if DEBUG else 'production',
     'root': BASE_DIR,
 }
