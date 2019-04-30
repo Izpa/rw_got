@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'suit',
+
+    # Base apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Additional apps
     'debug_toolbar',
+
+    # My apps
+    'rw_got.apps.telegram_bot',
 ]
 
 MIDDLEWARE = [
