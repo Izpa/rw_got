@@ -23,7 +23,7 @@ urlpatterns = [
 
 if settings.TELEGRAM_BOT_TOKEN:
     from django_telegrambot import urls
-    urlpatterns += [path('/', include(urls))]
+    urlpatterns += [path('', urls)]
 
 
 if settings.DEBUG:

@@ -133,7 +133,6 @@ if TELEGRAM_BOT_TOKEN:
     INSTALLED_APPS += ['django_telegrambot']
     DJANGO_TELEGRAMBOT = {
         'WEBHOOK_SITE': 'https://' + os.getenv('DOMAIN', ''),
-        'WEBHOOK_PREFIX': '/telegram_bot',
         'STRICT_INIT': True,
         'BOTS': [{'TOKEN': os.getenv('TELEGRAM_BOT_TOKEN')}],
     }
