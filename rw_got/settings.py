@@ -124,7 +124,7 @@ STATIC_URL = '/static/'
 # Telegram bot
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 if TELEGRAM_BOT_TOKEN:
-    INSTALLED_APPS += 'django_telegrambot'
+    INSTALLED_APPS += ['django_telegrambot']
     DJANGO_TELEGRAMBOT = {
         'WEBHOOK_SITE': 'https://' + os.getenv('DOMAIN', ''),
         'WEBHOOK_PREFIX': '/telegram_bot',
