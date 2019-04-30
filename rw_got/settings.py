@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import django_heroku
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -36,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'rw_got.urls'
@@ -75,7 +80,7 @@ WSGI_APPLICATION = 'rw_got.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'rw_got/db.sqlite3'),
     }
 }
 
@@ -115,6 +120,34 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+# Telegram bot
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+if TELEGRAM_BOT_TOKEN:
+    INSTALLED_APPS += 'django_telegrambot'
+    DJANGO_TELEGRAMBOT = {
+        'WEBHOOK_SITE': 'https://' + os.getenv('DOMAIN', ''),
+        'WEBHOOK_PREFIX': '/telegram_bot',
+        'STRICT_INIT': True,
+        'BOTS': [{'TOKEN': os.getenv('TELEGRAM_BOT_TOKEN')}],
+    }
+
+
+# Debug toolbar
+def show_toolbar(request):
+    return True
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': 'rw_got.settings.show_toolbar',
+}
+
+
+# Heroku
+django_heroku.settings(locals())
+
+
+# Rollbar
 ROLLBAR = {
     'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
     'environment': 'development' if DEBUG else 'production',
