@@ -31,7 +31,7 @@ class Bot(metaclass=Singleton):
     def _save_message(update):
         message = update.effective_message
         user = message.from_user
-        saved_user = User.objects.get_or_create(
+        saved_user, _ = User.objects.get_or_create(
             external_id=user.id,
             defaults={'first_name': user.first_name,
                       'last_name': user.last_name,
@@ -41,7 +41,7 @@ class Bot(metaclass=Singleton):
 
         )
         chat = message.chat
-        saved_chat = Chat.objects.get_or_create(
+        saved_chat, _ = Chat.objects.get_or_create(
             external_id=chat.id,
             defaults={
                 'first_name': chat.first_name,
@@ -56,7 +56,7 @@ class Bot(metaclass=Singleton):
             external_id=message.message_id,
             text=message.text,
             user=saved_user,
-            chat=saved_chat.id,
+            chat=saved_chat,
             defaults={'creation_date': message.date}
         )
 
