@@ -11,4 +11,5 @@ class WebhookView(View):
         return super(WebhookView, self).dispatch(request, *args, **kwargs)
 
     def post(self, request):
-        Bot().accept_message(request.body)
+        message = request.body.decode()
+        Bot().accept_message(message)
