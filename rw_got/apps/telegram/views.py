@@ -1,3 +1,5 @@
+import json
+
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
@@ -11,5 +13,5 @@ class WebhookView(View):
         return super(WebhookView, self).dispatch(request, *args, **kwargs)
 
     def post(self, request):
-        message = request.body.decode()
+        message = json.loads(request.body.decode())
         Bot().accept_message(message)
