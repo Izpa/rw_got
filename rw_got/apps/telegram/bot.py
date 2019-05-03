@@ -56,7 +56,7 @@ class Bot(metaclass=Singleton):
             external_id=message.message_id,
             text=message.text,
             user=saved_user,
-            chat=saved_chat,
+            chat=saved_chat.id,
             defaults={'creation_date': message.date}
         )
 
