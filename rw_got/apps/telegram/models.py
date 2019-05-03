@@ -17,7 +17,7 @@ class Chat(models.Model):
     username = models.CharField(max_length=100, blank=True, null=True)
     title = models.CharField(max_length=100, blank=True, null=True)
     type = models.CharField(max_length=100, blank=True, null=True)
-    all_members_are_administrators = models.BooleanField()
+    all_members_are_administrators = models.NullBooleanField(null=True)
 
 
 class IncomingMessage(models.Model):
