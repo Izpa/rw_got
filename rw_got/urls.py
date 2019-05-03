@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-urlpatterns += [path('', admin.site.urls)]
+urlpatterns += [path('', include('rw_got.apps.telegram.urls'))]
 
 if settings.DEBUG:
     import debug_toolbar
