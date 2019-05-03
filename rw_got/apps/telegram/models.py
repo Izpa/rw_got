@@ -29,7 +29,6 @@ class IncomingMessage(models.Model):
 
 
 class OutgoingMessage(models.Model):
-    external_id = models.IntegerField(db_index=True, unique=True)
     text = models.TextField(blank=True)
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
     creation_date = models.DateTimeField(blank=True, auto_now_add=True)

@@ -66,4 +66,5 @@ class Bot(metaclass=Singleton):
         self._dispatcher.process_update(update)
 
     def send_message(self, message: OutgoingMessage):
-        self._bot.send_message(chat_id=message.chat.id, text=message.text)
+        self._bot.send_message(chat_id=message.chat.external_id,
+                               text=message.text)
