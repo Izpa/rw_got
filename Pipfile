@@ -15,7 +15,6 @@ rollbar = "*"
 middleware = "*"
 gunicorn = "*"
 django-debug-toolbar = "*"
-django-telegrambot = "*"
 
 [requires]
 python_version = "3.7"

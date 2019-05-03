@@ -21,10 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-if settings.TELEGRAM_BOT_TOKEN:
-    from django_telegrambot import urls
-    urlpatterns += [path('', include(urls))]
-
+urlpatterns += [path('', admin.site.urls)]
 
 if settings.DEBUG:
     import debug_toolbar

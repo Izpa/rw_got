@@ -26,6 +26,8 @@ SECRET_KEY = '52xzr@)8g-l4g5ca)1j0v5-00cw1et=2tusz9$g4j1ohr!0amb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DOMAIN = os.getenv('DOMAIN')
+
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -45,7 +47,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     # My apps
-    'rw_got.apps.telegram_bot',
+    'rw_got.apps.telegram',
 ]
 
 MIDDLEWARE = [
@@ -129,14 +131,7 @@ STATIC_URL = '/static/'
 
 # Telegram bot
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-if TELEGRAM_BOT_TOKEN:
-    INSTALLED_APPS += ['django_telegrambot']
-    DJANGO_TELEGRAMBOT = {
-        'WEBHOOK_SITE': 'https://' + os.getenv('DOMAIN', ''),
-        'WEBHOOK_PREFIX': 'telegram_bot',
-        'STRICT_INIT': True,
-        'BOTS': [{'TOKEN': os.getenv('TELEGRAM_BOT_TOKEN')}],
-    }
+TELEGRAM_BOT_WEBHOOK_PATH = ''
 
 
 # Debug toolbar
