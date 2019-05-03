@@ -1,5 +1,6 @@
 import json
 
+from django.http import HttpResponse
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
@@ -15,3 +16,4 @@ class WebhookView(View):
     def post(self, request):
         message = json.loads(request.body.decode())
         Bot().accept_message(message)
+        return HttpResponse('')
