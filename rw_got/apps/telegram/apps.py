@@ -8,4 +8,4 @@ class TelegramConfig(AppConfig):
     def ready(self):
         if settings.TELEGRAM_BOT_TOKEN:
             from rw_got.apps.telegram.bot import Bot
-            Bot()
+            Bot().register_webhook()

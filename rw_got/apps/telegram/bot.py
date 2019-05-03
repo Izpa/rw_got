@@ -22,10 +22,12 @@ class Bot(metaclass=Singleton):
 
     def __init__(self):
         self._bot = telegram.Bot(settings.TELEGRAM_BOT_TOKEN)
+        self._dispatcher = Dispatcher(self._bot, Queue())
+
+    def register_webhook(self):
         webhook_url = 'https://{domain}/{path}'.format(
             domain=settings.DOMAIN, path=settings.TELEGRAM_BOT_WEBHOOK_PATH)
         self._bot.setWebhook(webhook_url)
-        self._dispatcher = Dispatcher(self._bot, Queue())
 
     @staticmethod
     def _save_message(update):
