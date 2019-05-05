@@ -19,6 +19,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('business-logic/', include('business_logic.urls')),
 ]
 
 urlpatterns += [path('', include('rw_got.apps.telegram.urls'))]

@@ -46,6 +46,16 @@ INSTALLED_APPS = [
     # Additional apps
     'debug_toolbar',
 
+    # django-business-logic
+    'ace_overlay', # optional, for comfortable python functions editing
+    'adminsortable2',
+    'nested_inline',
+    'polymorphic',
+    'rest_framework', # optional, provided browsable API for this library handy development
+    'django_filters', # ^^ same
+
+    'business_logic',
+
     # My apps
     'rw_got.apps.telegram',
 ]

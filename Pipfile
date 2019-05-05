@@ -15,6 +15,8 @@ rollbar = "*"
 middleware = "*"
 gunicorn = "*"
 django-debug-toolbar = "*"
+django-business-logic = "*"
+django-nested-inline = "*"
 
 [requires]
 python_version = "3.7"
