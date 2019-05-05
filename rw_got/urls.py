@@ -20,11 +20,13 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('business-logic/', include('business_logic.urls')),
+    path('nested_admin/', include('nested_admin.urls')),
 ]
 
 urlpatterns += [path('', include('rw_got.apps.telegram.urls'))]
 
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns = [path('debug/', include(debug_toolbar.urls))
                    ] + urlpatterns
