@@ -129,6 +129,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+# Google oaut2
+
+
+
 # Telegram bot
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 TELEGRAM_BOT_WEBHOOK_PATH = TELEGRAM_BOT_TOKEN or ''

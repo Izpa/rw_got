@@ -15,6 +15,7 @@ rollbar = "*"
 middleware = "*"
 gunicorn = "*"
 django-debug-toolbar = "*"
+oauth2client = "*"
 
 [requires]
 python_version = "3.7"
