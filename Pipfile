@@ -16,7 +16,7 @@ middleware = "*"
 gunicorn = "*"
 django-debug-toolbar = "*"
 django-business-logic = "*"
-django-nested-inline = "*"
+django-nested-admin = "*"
 
 [requires]
 python_version = "3.7"

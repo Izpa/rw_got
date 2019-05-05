@@ -47,12 +47,12 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     # django-business-logic
-    'ace_overlay', # optional, for comfortable python functions editing
+    'ace_overlay',
     'adminsortable2',
-    'nested_inline',
+    'nested_admin',
     'polymorphic',
-    'rest_framework', # optional, provided browsable API for this library handy development
-    'django_filters', # ^^ same
+    'rest_framework',
+    'django_filters',
 
     'business_logic',
 
