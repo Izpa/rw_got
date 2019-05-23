@@ -74,9 +74,8 @@ class OutgoingMessageAdmin(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return False
 
-    def __init__(self, *args, **kwargs):
-        super(OutgoingMessageAdmin, self).__init__(*args, **kwargs)
-        self.readonly_fields = self.model._meta.get_all_field_names()
+    def get_readonly_fields(self, request, obj=None):
+        return self.model._meta.get_all_field_names()
 
     def get_actions(self, request):
         actions = super(OutgoingMessageAdmin, self).get_actions(request)
