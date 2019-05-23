@@ -71,9 +71,9 @@ class Bot(metaclass=Singleton):
                 chat_id=message.chat.external_id,
                 text=message.text,
                 reply_to_message_id=message.reply_to.external_id)
-        if message.photo:
-            self._bot.send_photo(
-                chat_id=message.chat.external_id,
-                photo=message.photo.url,
-                reply_to_message_id=message.reply_to.external_id
-            )
+        # if message.photo:
+        #     self._bot.send_photo(
+        #         chat_id=message.chat.external_id,
+        #         photo=message.photo.url,
+        #         reply_to_message_id=message.reply_to.external_id
+        #     )
