@@ -10,7 +10,7 @@ def words_in_message_trigger(words: [str]):
     def f(m):
         result = False
         if m.text:
-            result = any(w.lower() in m.lower() for w in words)
+            result = any((w.lower() in m.lower() for w in words))
         return result
     return f
 
@@ -33,7 +33,7 @@ handlers = (
 
 def handle_message(message):
     for triggers, reactions in handlers:
-        if all(t(message) for t in triggers):
+        if all((t(message) for t in triggers)):
             for reaction in reactions:
                 reaction(message)
             break
