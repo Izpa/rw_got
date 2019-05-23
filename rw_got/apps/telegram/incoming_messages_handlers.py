@@ -34,7 +34,6 @@ def chance_trigger(chance: float):
 
 def disable_bot_reaction():
     def f(_):
-        print('azazazaza')
         config.TELEGRAM_BOT_ENABLE = False
     return f
 

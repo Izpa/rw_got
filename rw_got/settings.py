@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'polymorphic',
     'rest_framework',
     'django_filters',
+    'constance.backends.database',
     'constance',
 
     # My apps
