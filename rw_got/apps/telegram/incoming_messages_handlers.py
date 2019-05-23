@@ -25,15 +25,15 @@ def reply_text_reaction(t: str):
                                                     text=t)
 
 
-handlers = (
-    ((words_in_message_trigger(['ходор'],)), (reply_text_reaction('Ходор!'),)),
-    ((chance_trigger(0.5),), (reply_text_reaction('Ходор!'),)),
-)
+handlers = [
+    [[words_in_message_trigger(['ходор'])], [reply_text_reaction('Ходор!')]],
+    [[chance_trigger(0.5)], [reply_text_reaction('Ходор!')]],
+]
 
 
 def handle_message(message):
     for triggers, reactions in handlers:
-        if all((t(message) for t in triggers)):
+        if all(t(message) for t in triggers):
             for reaction in reactions:
                 reaction(message)
             break
