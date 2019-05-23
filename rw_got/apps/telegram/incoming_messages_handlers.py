@@ -1,4 +1,5 @@
 from rw_got.apps.telegram.models import OutgoingMessage
+from constance import config
 import random
 
 
@@ -6,7 +7,7 @@ def default_trigger(_):
     return True
 
 
-def words_in_message_trigger(words: [str]):
+def phrases_in_message_trigger(words: [str]):
     def f(m):
         result = False
         if m.text:
@@ -15,8 +16,30 @@ def words_in_message_trigger(words: [str]):
     return f
 
 
+def is_creator_trigger():
+    return lambda m: m.user.external_id == 112789249
+
+
+def bot_is_enable_trigger():
+    return lambda _: config.TELEGRAM_BOT_ENABLE
+
+
+def bot_is_disable_trigger():
+    return lambda _: not config.TELEGRAM_BOT_ENABLE
+
+
 def chance_trigger(chance: float):
-    return lambda m: random.random() <= chance
+    return lambda _: random.random() <= chance
+
+
+def disable_bot_reaction():
+    def f(_): config.TELEGRAM_BOT_ENABLE = False
+    return f
+
+
+def enable_bot_reaction():
+    def f(_): config.TELEGRAM_BOT_ENABLE = True
+    return f
 
 
 def reply_text_reaction(t: str):
@@ -26,8 +49,20 @@ def reply_text_reaction(t: str):
 
 
 handlers = [
-    [[words_in_message_trigger(['ходор'])], [reply_text_reaction('Ходор!')]],
-    [[chance_trigger(0.5)], [reply_text_reaction('Ходор!')]],
+    # Disable bot
+    [[bot_is_enable_trigger(),
+      is_creator_trigger(),
+      phrases_in_message_trigger(['остановить моторику',
+                                  'усни глубоким сном без сновидений'])],
+     [disable_bot_reaction()]],
+
+    [[bot_is_enable_trigger(),
+      phrases_in_message_trigger(['ходор'])],
+     [reply_text_reaction('Ходор!')]],
+
+    [[bot_is_enable_trigger(),
+      chance_trigger(0.05)],
+     [reply_text_reaction('Ходор!')]],
 ]
 
 

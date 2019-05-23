@@ -46,13 +46,13 @@ INSTALLED_APPS = [
     # Additional apps
     'debug_toolbar',
 
-    # django-business-logic
     'ace_overlay',
     'adminsortable2',
     'nested_admin',
     'polymorphic',
     'rest_framework',
     'django_filters',
+    'constance',
 
     # My apps
     'rw_got.apps.telegram',
@@ -135,6 +135,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# constance
+CONSTANCE_CONFIG = {
+    'TELEGRAM_BOT_ENABLE': (True, 'If false, bot dont answer to message', bool),
+}
 
 
 # Telegram bot
