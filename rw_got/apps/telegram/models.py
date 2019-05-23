@@ -45,7 +45,7 @@ class OutgoingMessage(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
     creation_date = models.DateTimeField(blank=True, auto_now_add=True)
     reply_to = models.ForeignKey(IncomingMessage, on_delete=models.CASCADE,
-                                 blank=True, default=None)
+                                 blank=True, default=None, null=True)
 
     def __str__(self):
         return self.text
