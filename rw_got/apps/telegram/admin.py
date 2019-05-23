@@ -66,6 +66,8 @@ class IncomingMessageAdmin(admin.ModelAdmin, ReadOnlyAdminMixin):
     list_filter = ('text', 'user', 'chat', 'creation_date')
     list_display_links = ('id',)
 
+    inlines = [OutgoingMessageInline]
+
 
 @admin.register(OutgoingMessage)
 class OutgoingMessageAdmin(admin.ModelAdmin):
