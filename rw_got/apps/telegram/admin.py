@@ -32,6 +32,7 @@ class ReadOnlyAdminMixin(object):
 class UserAdmin(admin.ModelAdmin, ReadOnlyAdminMixin):
     list_display = ('id', 'first_name', 'last_name', 'username')
     search_fields = ('first_name', 'last_name', 'username')
+    list_filter = ('first_name', 'last_name', 'username')
     list_display_links = ('id',)
     readonly_fields = ('id', 'external_id', )
 
@@ -52,6 +53,7 @@ class OutgoingMessageInline(admin.TabularInline, ReadOnlyAdminMixin):
 class ChatAdmin(admin.ModelAdmin, ReadOnlyAdminMixin):
     list_display = ('id', 'first_name', 'last_name', 'username', 'title')
     search_fields = ('first_name', 'last_name', 'username', 'title')
+    list_filter = ('first_name', 'last_name', 'username', 'title')
     list_display_links = ('id',)
 
     inlines = [IncomingMessageInline, OutgoingMessageInline]
@@ -61,6 +63,7 @@ class ChatAdmin(admin.ModelAdmin, ReadOnlyAdminMixin):
 class IncomingMessageAdmin(admin.ModelAdmin, ReadOnlyAdminMixin):
     list_display = ('id', 'text', 'user', 'chat', 'creation_date')
     search_fields = ('text', 'user', 'chat', 'creation_date')
+    list_filter = ('text', 'user', 'chat', 'creation_date')
     list_display_links = ('id',)
 
 
@@ -68,6 +71,7 @@ class IncomingMessageAdmin(admin.ModelAdmin, ReadOnlyAdminMixin):
 class OutgoingMessageAdmin(admin.ModelAdmin):
     list_display = ('id', 'text', 'chat', 'creation_date')
     search_fields = ('text', 'chat', 'creation_date')
+    list_filter = ('text', 'chat', 'creation_date')
     list_display_links = ('id',)
 
     def has_delete_permission(self, request, obj=None):
