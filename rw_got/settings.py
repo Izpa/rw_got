@@ -45,10 +45,8 @@ INSTALLED_APPS = [
 
     # Additional apps
     'debug_toolbar',
-
     'nested_admin',
     'rest_framework',
-    'django_filters',
     'constance.backends.database',
     'constance',
 
