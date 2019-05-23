@@ -10,10 +10,20 @@ class UserAdmin(admin.ModelAdmin):
     list_display_links = ('id',)
 
 
+class IncomingMessageInline(admin.TabularInline):
+    model = IncomingMessage
+
+
+class OutgoingMessageInline(admin.TabularInline):
+    model = OutgoingMessage
+
+
 @admin.register(Chat)
 class ChatAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'last_name', 'username', 'title')
     list_display_links = ('id',)
+
+    inlines = [IncomingMessageInline, OutgoingMessageInline]
 
 
 @admin.register(IncomingMessage)
