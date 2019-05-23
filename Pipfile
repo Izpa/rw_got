@@ -8,7 +8,6 @@ verify_ssl = true
 [packages]
 django = "*"
 djangorestframework = "*"
-django-split-settings = "*"
 django-suit = "*"
 django-heroku = "*"
 rollbar = "*"
@@ -18,7 +17,7 @@ django-debug-toolbar = "*"
 django-nested-admin = "*"
 pillow = "*"
 django-constance = "*"
-django-redis-cache = "*"
+
 
 [requires]
 python_version = "3.7"
