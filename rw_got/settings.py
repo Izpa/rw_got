@@ -54,8 +54,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
 
-    'business_logic',
-
     # My apps
     'rw_got.apps.telegram',
 ]

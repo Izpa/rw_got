@@ -15,7 +15,6 @@ rollbar = "*"
 middleware = "*"
 gunicorn = "*"
 django-debug-toolbar = "*"
-django-business-logic = "*"
 django-nested-admin = "*"
 
 [requires]
