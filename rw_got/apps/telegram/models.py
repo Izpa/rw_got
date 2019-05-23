@@ -49,7 +49,7 @@ class OutgoingMessage(models.Model):
                                  blank=True, default=None, null=True)
 
     def __str__(self):
-        return self.text
+        return self.text or self.photo.url
 
     def save(self, *args, **kwargs):
         if self.id is None:
