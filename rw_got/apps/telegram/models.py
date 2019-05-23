@@ -48,8 +48,8 @@ class OutgoingMessage(models.Model):
     reply_to = models.ForeignKey(IncomingMessage, on_delete=models.CASCADE,
                                  blank=True, default=None, null=True)
 
-    # def __str__(self):
-    #     return self.text or self.photo.url
+    def __str__(self):
+        return self.text or self.photo_url
 
     def save(self, *args, **kwargs):
         if self.id is None:
