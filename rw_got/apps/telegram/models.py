@@ -31,7 +31,7 @@ class Chat(models.Model):
 
 class IncomingMessage(models.Model):
     external_id = models.IntegerField()
-    text = models.TextField(blank=True)
+    text = models.TextField(blank=True, null=True, default=None)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
     creation_date = models.DateTimeField(blank=True)
@@ -41,8 +41,9 @@ class IncomingMessage(models.Model):
 
 
 class OutgoingMessage(models.Model):
-    text = models.TextField(blank=True)
+    text = models.TextField(blank=True, null=True, default=None)
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
+    photo = models.ImageField(blank=True, default=None, null=True)
     creation_date = models.DateTimeField(blank=True, auto_now_add=True)
     reply_to = models.ForeignKey(IncomingMessage, on_delete=models.CASCADE,
                                  blank=True, default=None, null=True)

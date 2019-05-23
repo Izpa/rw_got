@@ -16,6 +16,7 @@ middleware = "*"
 gunicorn = "*"
 django-debug-toolbar = "*"
 django-nested-admin = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
