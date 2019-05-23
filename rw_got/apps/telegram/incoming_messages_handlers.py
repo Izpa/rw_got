@@ -16,7 +16,7 @@ def words_in_message_trigger(words: [str]):
 
 
 def chance_trigger(chance: float):
-    return lambda: random.random() <= chance
+    return lambda m: random.random() <= chance
 
 
 def reply_text_reaction(t: str):
