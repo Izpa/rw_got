@@ -9,13 +9,22 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'last_name', 'username')
     list_display_links = ('id',)
 
+    def has_add_permission(self, request, obj=None):
+        return False
+
 
 class IncomingMessageInline(admin.TabularInline):
     model = IncomingMessage
+    extra = 0
+    can_delete = False
+
+    def has_add_permission(self, request, obj=None):
+        return False
 
 
 class OutgoingMessageInline(admin.TabularInline):
     model = OutgoingMessage
+    extra = 1
 
 
 @admin.register(Chat)
@@ -25,11 +34,17 @@ class ChatAdmin(admin.ModelAdmin):
 
     inlines = [IncomingMessageInline, OutgoingMessageInline]
 
+    def has_add_permission(self, request, obj=None):
+        return False
+
 
 @admin.register(IncomingMessage)
 class IncomingMessageAdmin(admin.ModelAdmin):
     list_display = ('id', 'text', 'user', 'chat', 'creation_date')
     list_display_links = ('id',)
+
+    def has_add_permission(self, request, obj=None):
+        return False
 
 
 @admin.register(OutgoingMessage)
