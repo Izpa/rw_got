@@ -6,6 +6,7 @@ from telegram.ext import Dispatcher
 
 from rw_got.apps.telegram.models import User, Chat, IncomingMessage, \
     OutgoingMessage
+from rw_got.apps.telegram.incoming_messages_handlers import handle_message
 
 
 class Singleton(type):
@@ -52,13 +53,14 @@ class Bot(metaclass=Singleton):
                 'all_members_are_administrators':
                     chat.all_members_are_administrators}
         )
-        IncomingMessage.objects.get_or_create(
+        message = IncomingMessage.objects.get_or_create(
             external_id=message.message_id,
             text=message.text,
             user=saved_user,
             chat=saved_chat,
             defaults={'creation_date': message.date}
         )
+        handle_message(message)
 
     def accept_message(self, update: str):
         update = telegram.Update.de_json(update, self._bot)
