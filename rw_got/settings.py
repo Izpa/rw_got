@@ -145,6 +145,7 @@ CACHES = {
 
 
 # constance
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 CONSTANCE_CONFIG = {
     'TELEGRAM_BOT_ENABLE': (True, 'If false, bot dont answer to message', bool),
 }
