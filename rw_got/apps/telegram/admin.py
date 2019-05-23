@@ -76,6 +76,3 @@ class OutgoingMessageAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
-
-    def get_readonly_fields(self, request, obj=None):
-        return self.model._meta.get_all_field_names()
