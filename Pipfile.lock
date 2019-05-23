@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7a14c49d3924a8dc9c7cfa0a6167b8ef8ae8e0ca8ad41d20d5f5ed9709e6a339"
+            "sha256": "77ed0fa7f661af9ce56e59943cd37416d7333db7b45378ba62d105e02e560ebf"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -47,7 +47,7 @@
         },
         "django-constance": {
             "extras": [
-                "database"
+                "postgres"
             ],
             "hashes": [
                 "sha256:19ff1ae8295aeffc2917ab67da4b310bfaf8c42f34d570f89e289fd54c4217b0",
@@ -79,13 +79,6 @@
             ],
             "index": "pypi",
             "version": "==3.2.3"
-        },
-        "django-picklefield": {
-            "hashes": [
-                "sha256:9052f2dcf4882c683ce87b4356f29b4d014c0dad645b6906baf9f09571f52bc8",
-                "sha256:f1733a8db1b6046c0d7d738e785f9875aa3c198215de11993463a9339aa4ea24"
-            ],
-            "version": "==2.0"
         },
         "django-split-settings": {
             "hashes": [

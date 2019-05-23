@@ -17,7 +17,7 @@ gunicorn = "*"
 django-debug-toolbar = "*"
 django-nested-admin = "*"
 pillow = "*"
-django-constance = {extras = ["database"],version = "*"}
+django-constance = {extras = ["postgres"],version = "*"}
 
 [requires]
 python_version = "3.7"
