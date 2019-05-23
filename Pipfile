@@ -7,7 +7,6 @@ verify_ssl = true
 
 [packages]
 django = "*"
-django-telegrambot = "*"
 djangorestframework = "*"
 django-split-settings = "*"
 django-suit = "*"
@@ -15,6 +14,11 @@ django-heroku = "*"
 rollbar = "*"
 middleware = "*"
 gunicorn = "*"
+django-debug-toolbar = "*"
+django-nested-admin = "*"
+pillow = "*"
+django-constance = "*"
+django-redis-cache = "*"
 
 [requires]
 python_version = "3.7"

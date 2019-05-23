@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import django_heroku
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -24,17 +26,37 @@ SECRET_KEY = '52xzr@)8g-l4g5ca)1j0v5-00cw1et=2tusz9$g4j1ohr!0amb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DOMAIN = os.getenv('DOMAIN')
+
 ALLOWED_HOSTS = []
 
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
+
+    # Base apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Additional apps
+    'debug_toolbar',
+
+    'ace_overlay',
+    'adminsortable2',
+    'nested_admin',
+    'polymorphic',
+    'rest_framework',
+    'django_filters',
+    'constance.backends.database',
+    'constance',
+
+    # My apps
+    'rw_got.apps.telegram',
 ]
 
 MIDDLEWARE = [
@@ -46,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'rw_got.urls'
@@ -74,7 +97,7 @@ WSGI_APPLICATION = 'rw_got.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'rw_got/db.sqlite3'),
     }
 }
 
@@ -114,8 +137,43 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+CACHES = {
+    "default": {
+         "BACKEND": "redis_cache.RedisCache",
+         "LOCATION": os.environ.get('REDIS_URL'),
+    }
+}
+
+
+# constance
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_CONFIG = {
+    'TELEGRAM_BOT_ENABLE': (True, 'If false, bot dont answer to message', bool),
+}
+
+
+# Telegram bot
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+TELEGRAM_BOT_WEBHOOK_PATH = TELEGRAM_BOT_TOKEN or ''
+
+
+# Debug toolbar
+def show_toolbar(request):
+    return True
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': 'rw_got.settings.show_toolbar',
+}
+
+
+# Heroku
+django_heroku.settings(locals())
+
+
+# Rollbar
 ROLLBAR = {
-    'access_token': 'deb11866ae2e417997c09e0be075ca30',
+    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
     'environment': 'development' if DEBUG else 'production',
     'root': BASE_DIR,
 }
