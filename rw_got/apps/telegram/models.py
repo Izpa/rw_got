@@ -9,6 +9,10 @@ class User(models.Model):
     is_bot = models.BooleanField()
     language_code = models.CharField(max_length=100, blank=True, null=True)
 
+    def __str__(self):
+        return self.username \
+               or str(self.last_name) + ' ' + str(self.first_name)
+
 
 class Chat(models.Model):
     external_id = models.IntegerField(db_index=True, unique=True)
@@ -19,6 +23,11 @@ class Chat(models.Model):
     type = models.CharField(max_length=100, blank=True, null=True)
     all_members_are_administrators = models.NullBooleanField(null=True)
 
+    def __str__(self):
+        return self.title \
+               or self.username \
+               or str(self.last_name) + ' ' + str(self.first_name)
+
 
 class IncomingMessage(models.Model):
     external_id = models.IntegerField()
@@ -27,11 +36,17 @@ class IncomingMessage(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
     creation_date = models.DateTimeField(blank=True)
 
+    def __str__(self):
+        return self.text
+
 
 class OutgoingMessage(models.Model):
     text = models.TextField(blank=True)
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
     creation_date = models.DateTimeField(blank=True, auto_now_add=True)
+
+    def __str__(self):
+        return self.text
 
     def save(self, *args, **kwargs):
         if self.id is None:
