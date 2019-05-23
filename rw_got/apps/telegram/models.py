@@ -2,7 +2,7 @@ from django.db import models
 
 
 class User(models.Model):
-    external_id = models.IntegerField(db_index=True, unique=True,)
+    external_id = models.IntegerField(db_index=True, unique=True)
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
     username = models.CharField(max_length=100, blank=True, null=True)
