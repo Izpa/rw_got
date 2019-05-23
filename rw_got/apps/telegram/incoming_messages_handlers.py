@@ -10,7 +10,7 @@ def words_in_message_trigger(words: [str]):
     def f(m):
         result = False
         if m.text:
-            result = any((w.lower() in m.lower() for w in words))
+            result = any((w.lower() in m.text.lower() for w in words))
         return result
     return f
 
