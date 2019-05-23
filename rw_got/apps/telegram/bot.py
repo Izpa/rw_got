@@ -53,7 +53,7 @@ class Bot(metaclass=Singleton):
                 'all_members_are_administrators':
                     chat.all_members_are_administrators}
         )
-        message = IncomingMessage.objects.get_or_create(
+        message, _ = IncomingMessage.objects.get_or_create(
             external_id=message.message_id,
             text=message.text,
             user=saved_user,
