@@ -46,10 +46,7 @@ INSTALLED_APPS = [
     # Additional apps
     'debug_toolbar',
 
-    'ace_overlay',
-    'adminsortable2',
     'nested_admin',
-    'polymorphic',
     'rest_framework',
     'django_filters',
     'constance.backends.database',
