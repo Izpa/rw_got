@@ -68,4 +68,4 @@ class Bot(metaclass=Singleton):
     def send_message(self, message: OutgoingMessage):
         self._bot.send_message(chat_id=message.chat.external_id,
                                text=message.text,
-                               reply_to_message_id=message.reply_to.id)
+                               reply_to_message_id=message.reply_to.external_id)
