@@ -18,6 +18,7 @@ django-debug-toolbar = "*"
 django-nested-admin = "*"
 pillow = "*"
 django-constance = "*"
+redis = "*"
 
 [requires]
 python_version = "3.7"
