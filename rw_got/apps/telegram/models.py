@@ -43,7 +43,7 @@ class IncomingMessage(models.Model):
 class OutgoingMessage(models.Model):
     text = models.TextField(blank=True, null=True, default=None)
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
-    photo = models.ImageField(blank=True, default=None, null=True)
+    photo_url = models.URLField(blank=True, default=None, null=True)
     creation_date = models.DateTimeField(blank=True, auto_now_add=True)
     reply_to = models.ForeignKey(IncomingMessage, on_delete=models.CASCADE,
                                  blank=True, default=None, null=True)

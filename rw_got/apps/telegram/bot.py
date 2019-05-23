@@ -71,5 +71,5 @@ class Bot(metaclass=Singleton):
             params['reply_to_message_id'] = message.reply_to.external_id
         if message.text:
             self._bot.send_message(text=message.text, **params)
-        # if message.photo:
-        #     self._bot.send_photo(photo=message.photo.url, **params)
+        if message.photo_url:
+            self._bot.send_photo(photo=message.photo_url, **params)
