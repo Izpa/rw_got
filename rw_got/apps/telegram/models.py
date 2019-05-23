@@ -37,7 +37,7 @@ class IncomingMessage(models.Model):
     creation_date = models.DateTimeField(blank=True)
 
     def __str__(self):
-        return self.text
+        return self.text or super(IncomingMessage, self).__str__()
 
 
 class OutgoingMessage(models.Model):
@@ -48,8 +48,8 @@ class OutgoingMessage(models.Model):
     reply_to = models.ForeignKey(IncomingMessage, on_delete=models.CASCADE,
                                  blank=True, default=None, null=True)
 
-    def __str__(self):
-        return self.text or self.photo.url or super(OutgoingMessage, self).__str__()
+    # def __str__(self):
+    #     return self.text or self.photo.url
 
     def save(self, *args, **kwargs):
         if self.id is None:
