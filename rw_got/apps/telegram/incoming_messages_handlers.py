@@ -83,11 +83,11 @@ handlers = [
 
     [[bot_is_enable_trigger(),
       phrases_in_message_trigger(['ходор'])],
-     [reply_reaction(text='Ходор!')]],
+     [default_replies_reaction]],
 
     [[bot_is_enable_trigger(),
       chance_trigger(0.05)],
-     [reply_reaction(text='Ходор!')]],
+     [default_replies_reaction]],
 ]
 
 
