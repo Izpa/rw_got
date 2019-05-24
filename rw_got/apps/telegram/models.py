@@ -2,7 +2,7 @@ from django.db import models
 
 
 class User(models.Model):
-    external_id = models.IntegerField(db_index=True, unique=True)
+    external_id = models.BigIntegerField(db_index=True, unique=True)
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
     username = models.CharField(max_length=100, blank=True, null=True)
@@ -30,7 +30,7 @@ class Chat(models.Model):
 
 
 class IncomingMessage(models.Model):
-    external_id = models.IntegerField()
+    external_id = models.BigIntegerField()
     text = models.TextField(blank=True, null=True, default=None)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
