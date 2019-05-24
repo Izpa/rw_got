@@ -2,6 +2,7 @@ from queue import Queue
 
 import telegram
 from django.conf import settings
+from telegram.error import Unauthorized
 from telegram.ext import Dispatcher
 
 from rw_got.apps.telegram.models import User, Chat, IncomingMessage, \
@@ -71,7 +72,10 @@ class Bot(metaclass=Singleton):
         params = {'chat_id': message.chat.external_id}
         if message.reply_to:
             params['reply_to_message_id'] = message.reply_to.external_id
-        if message.text:
-            self._bot.send_message(text=message.text, **params)
-        if message.photo_url:
-            self._bot.send_photo(photo=message.photo_url, **params)
+        try:
+            if message.text:
+                self._bot.send_message(text=message.text, **params)
+            if message.photo_url:
+                self._bot.send_photo(photo=message.photo_url, **params)
+        except Unauthorized:
+            pass
