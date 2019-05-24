@@ -131,18 +131,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CACHES = {
-    "default": {
-         "BACKEND": "redis_cache.RedisCache",
-         "LOCATION": os.environ.get('REDIS_URL'),
-    }
-}
-
 
 # constance
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 CONSTANCE_CONFIG = {
-    'TELEGRAM_BOT_ENABLE': (True, 'If false, bot dont answer to message', bool),
+    'TELEGRAM_BOT_ENABLE':
+        (True, 'If false, bot dont answer to message', bool),
+    'DEFAULT_REPLIES_INDEX': (0, '', int),
 }
 
 
