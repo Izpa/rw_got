@@ -2,7 +2,7 @@ from queue import Queue
 
 import telegram
 from django.conf import settings
-from telegram.error import Unauthorized
+from telegram.error import Unauthorized, RetryAfter
 from telegram.ext import Dispatcher
 
 from rw_got.apps.telegram.models import User, Chat, IncomingMessage, \
@@ -26,7 +26,10 @@ class Bot(metaclass=Singleton):
         self._bot = telegram.Bot(settings.TELEGRAM_BOT_TOKEN)
         webhook_url = 'https://{domain}/{path}'.format(
             domain=settings.DOMAIN, path=settings.TELEGRAM_BOT_WEBHOOK_PATH)
-        self._bot.setWebhook(webhook_url)
+        try:
+            self._bot.setWebhook(webhook_url)
+        except RetryAfter:
+            pass
         self._dispatcher = Dispatcher(self._bot, Queue())
 
     @staticmethod
