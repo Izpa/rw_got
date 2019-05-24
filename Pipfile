@@ -17,6 +17,5 @@ django-nested-admin = "*"
 pillow = "*"
 django-constance = "*"
 
-
 [requires]
 python_version = "3.7"
