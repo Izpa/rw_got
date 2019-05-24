@@ -49,9 +49,7 @@ class Bot(metaclass=Singleton):
                 'last_name': chat.last_name,
                 'username': chat.username,
                 'title': chat.title,
-                'type': chat.type,
-                'all_members_are_administrators':
-                    chat.all_members_are_administrators}
+                'type': chat.type}
         )
         message, _ = IncomingMessage.objects.get_or_create(
             external_id=message.message_id,
