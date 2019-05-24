@@ -15,11 +15,13 @@ class User(models.Model):
 
 
 class Chat(models.Model):
-    external_id = models.IntegerField(db_index=True, unique=True)
+    external_id = models.BigIntegerField(db_index=True, unique=True)
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
     username = models.CharField(max_length=100, blank=True, null=True)
     title = models.CharField(max_length=100, blank=True, null=True)
+    type = models.CharField(max_length=100, blank=True, null=True)
+    all_members_are_administrators = models.NullBooleanField(null=True)
 
     def __str__(self):
         return self.title \
