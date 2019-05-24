@@ -20,7 +20,6 @@ class Chat(models.Model):
     last_name = models.CharField(max_length=100, blank=True, null=True)
     username = models.CharField(max_length=100, blank=True, null=True)
     title = models.CharField(max_length=100, blank=True, null=True)
-    type = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.title \
