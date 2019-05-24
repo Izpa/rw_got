@@ -56,6 +56,7 @@ def reply_reaction(text: str = None, photo_url: str = None):
 def reply_cycle_reaction(replies: [], index_name: str):
     def f(m):
         i = config.__getattr__(index_name)
+        i = 0 if i >= len(replies) else i
         OutgoingMessage.objects.create(chat=m.chat,
                                        reply_to=m,
                                        **replies[i])
