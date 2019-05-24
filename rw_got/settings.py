@@ -138,6 +138,7 @@ CONSTANCE_CONFIG = {
     'TELEGRAM_BOT_ENABLE':
         (True, 'If false, bot dont answer to message', bool),
     'DEFAULT_REPLIES_INDEX': (0, '', int),
+    'DOOR_REPLIES_INDEX': (0, '', int),
 }
 
 
