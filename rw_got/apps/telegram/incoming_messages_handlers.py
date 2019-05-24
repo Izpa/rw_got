@@ -180,7 +180,7 @@ handlers = [
      [disable_bot_reaction()]],
 
     [[bot_is_enable_trigger(),
-      phrases_in_message_trigger(['дверь', 'door', 'hold', 'gate', 'close', 'закрой', 'держи', 'ход', 'затвор'])],
+      phrases_in_message_trigger(['дверь', 'door', 'hold', 'gate', 'close', 'закрой', 'держи', 'затвор'])],
      [door_replies_reaction]],
 
     [[bot_is_enable_trigger(),
